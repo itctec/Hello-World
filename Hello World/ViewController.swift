@@ -87,6 +87,18 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         //seg.removeAllSegments()
         self.view.addSubview(seg)
         
+        //UISlider
+        let slider=UISlider(frame: CGRect(x: 10, y: 250, width: 350, height: 30))
+        slider.isContinuous=true
+        slider.minimumValue=0
+        slider.maximumValue=10
+        slider.minimumTrackTintColor=UIColor.red
+        slider.maximumTrackTintColor=UIColor.green
+        //slider.thumbTintColor=UIColor.blue
+        slider.setThumbImage(UIImage(named: "ic_launcher"), for: UIControl.State.normal)
+        slider.addTarget(self, action: #selector(changeValue), for: UIControl.Event.valueChanged)
+        self.view.addSubview(slider)
+        
     }
     
     @objc func changeColor(){
@@ -99,6 +111,10 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         }else{
             self.view.backgroundColor=UIColor.white
         }
+    }
+    
+    @objc func changeValue(slider:UISlider){
+        print(slider.value)
     }
     
     @objc func changeNum(page:UIPageControl){
