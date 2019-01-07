@@ -58,10 +58,25 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         textField.delegate=self
         self.view.addSubview(textField)
         
+        let swi=UISwitch(frame: CGRect(x: 90, y: 90, width: 100, height: 40))
+        swi.onTintColor=UIColor.green
+        swi.tintColor=UIColor.blue
+        swi.thumbTintColor=UIColor.orange
+        swi.addTarget(self, action: #selector(changeSwiColor), for: UIControl.Event.touchUpInside)
+        self.view.addSubview(swi)
+        
     }
     
     @objc func changeColor(){
         self.view.backgroundColor=UIColor(red: CGFloat(arc4random()%255)/255.0, green: CGFloat(arc4random()%255)/255.0, blue: CGFloat(arc4random()%255)/255.0, alpha: 1)
+    }
+    
+    @objc func changeSwiColor(swi:UISwitch){
+        if swi.isOn{
+            self.view.backgroundColor=UIColor.red
+        }else{
+            self.view.backgroundColor=UIColor.white
+        }
     }
     
     func textField(_ textField:UITextField,shouldChangeCharactersIn range:NSRange,replacementString string:String)-> Bool{
