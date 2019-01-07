@@ -25,8 +25,28 @@ class ViewController: UIViewController {
         
         self.view.addSubview(label)
         
+        //UIButton
+        let button=UIButton(type: UIButton.ButtonType.custom)
+        button.frame=CGRect(x: 40, y: 170, width: 120, height: 120)
+        button.backgroundColor=UIColor.blue
+        //button.setBackgroundImage(UIImage(named:"ic_launcher"), for: UIControl.State.normal)
+        button.setImage(UIImage(named: "ic_launcher"), for: UIControl.State.normal)
+        button.setTitle("点我一下", for: UIControl.State.normal)
+        var edgeInsets=UIEdgeInsets()
+        edgeInsets.top=CGFloat(0)
+        edgeInsets.bottom=CGFloat(0)
+        edgeInsets.left=CGFloat(0)
+        edgeInsets.right=CGFloat(0)
+        button.contentEdgeInsets=edgeInsets
+        button.imageEdgeInsets=edgeInsets
+        button.titleEdgeInsets=edgeInsets
+        button.addTarget(self, action: #selector(changeColor), for: UIControl.Event.touchUpInside)
+        self.view.addSubview(button)
         
-        
+    }
+    
+    @objc func changeColor(){
+        self.view.backgroundColor=UIColor(red: CGFloat(arc4random()%255)/255.0, green: CGFloat(arc4random()%255)/255.0, blue: CGFloat(arc4random()%255)/255.0, alpha: 1)
     }
 
 
