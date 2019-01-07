@@ -106,6 +106,13 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         indicator.color=UIColor.black
         self.view.addSubview(indicator)
         indicator.startAnimating()
+        
+        //UIProgressView
+        let progressView=UIProgressView(frame: CGRect(x: 10, y: 320, width: 350, height: 30))
+        progressView.progressTintColor=UIColor.red
+        progressView.trackTintColor=UIColor.green
+        self.view.addSubview(progressView)
+        progressView.progress=0.2
     }
     
     @objc func changeColor(){
