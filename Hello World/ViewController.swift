@@ -67,11 +67,25 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         self.view.addSubview(swi)
         
         //UIPageControl
-        let page=UIPageControl(frame: CGRect(x: 10, y: 140, width: 300, height: 100))
+        let page=UIPageControl(frame: CGRect(x: 10, y: 140, width: 300, height: 60))
         page.currentPageIndicatorTintColor=UIColor.red
         page.addTarget(self, action: #selector(changeNum), for: UIPageControl.Event.valueChanged)
         page.numberOfPages=8
         self.view.addSubview(page)
+        
+        //UISegmentedControl
+        let seg=UISegmentedControl(items: ["one","two","three! I am a special Button"])
+        seg.frame=CGRect(x: 10, y: 210, width: 320, height: 30)
+        seg.setImage(UIImage(named: "ic_launcher")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), forSegmentAt: 1)
+        seg.setContentOffset(CGSize(width: 0, height: 0), forSegmentAt: 1)
+        seg.isMomentary=false
+        seg.insertSegment(withTitle: "new", at: 2, animated: true)
+        seg.removeSegment(at: 1, animated: true)
+        seg.setTitle("replace", forSegmentAt: 1)
+        //seg.setWidth(150, forSegmentAt: 2)
+        seg.apportionsSegmentWidthsByContent=true
+        //seg.removeAllSegments()
+        self.view.addSubview(seg)
         
     }
     
