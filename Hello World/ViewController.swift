@@ -135,6 +135,20 @@ class ViewController: UIViewController ,UITextFieldDelegate,UIPickerViewDelegate
         picker.delegate=self
         picker.dataSource=self
         self.view.addSubview(picker)
+        
+        //CALayer
+        let btn=UIButton(type:UIButton.ButtonType.custom)
+        btn.setTitle("跳转按钮", for: UIControl.State.normal)
+        btn.frame=CGRect(x: 10, y: 550, width: 100, height: 30)
+        btn.backgroundColor=UIColor.red
+        btn.layer.masksToBounds=true
+        btn.layer.cornerRadius=10
+        //btn.layer.borderColor=UIColor.green.cgColor
+        //btn.layer.borderWidth=1
+        btn.layer.shadowColor=UIColor.gray.cgColor
+        btn.layer.shadowOffset=CGSize(width: 10, height: 10)
+        btn.layer.shadowOpacity=1
+        self.view.addSubview(btn)
     }
     
     @objc func changeColor(){
