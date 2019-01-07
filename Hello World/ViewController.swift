@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController ,UITextFieldDelegate{
-
+class ViewController: UIViewController ,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource{
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -127,6 +129,12 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         stepper.addTarget(self, action: #selector(click), for: UIControl.Event.valueChanged)
 //        stepper.setDecrementImage(UIImage(named: "ic_launcher")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), for: UIControl.State.normal)
         self.view.addSubview(stepper)
+        
+        //UIPickerView
+        let picker=UIPickerView(frame: CGRect(x: 10, y: 390, width: 350, height: 150))
+        picker.delegate=self
+        picker.dataSource=self
+        self.view.addSubview(picker)
     }
     
     @objc func changeColor(){
@@ -170,6 +178,29 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         return true
     }
 
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 10
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(component)分区\(row)行数据"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 44
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return 160
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("\(component)分区\(row)行")
+    }
 
 }
 
