@@ -58,12 +58,20 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         textField.delegate=self
         self.view.addSubview(textField)
         
+        //UISwitch
         let swi=UISwitch(frame: CGRect(x: 90, y: 90, width: 100, height: 40))
         swi.onTintColor=UIColor.green
         swi.tintColor=UIColor.blue
         swi.thumbTintColor=UIColor.orange
         swi.addTarget(self, action: #selector(changeSwiColor), for: UIControl.Event.touchUpInside)
         self.view.addSubview(swi)
+        
+        //UIPageControl
+        let page=UIPageControl(frame: CGRect(x: 10, y: 140, width: 300, height: 100))
+        page.currentPageIndicatorTintColor=UIColor.red
+        page.addTarget(self, action: #selector(changeNum), for: UIPageControl.Event.valueChanged)
+        page.numberOfPages=8
+        self.view.addSubview(page)
         
     }
     
@@ -77,6 +85,10 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         }else{
             self.view.backgroundColor=UIColor.white
         }
+    }
+    
+    @objc func changeNum(page:UIPageControl){
+        print(page.currentPage)
     }
     
     func textField(_ textField:UITextField,shouldChangeCharactersIn range:NSRange,replacementString string:String)-> Bool{
