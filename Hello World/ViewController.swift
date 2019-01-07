@@ -113,6 +113,20 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         progressView.trackTintColor=UIColor.green
         self.view.addSubview(progressView)
         progressView.progress=0.2
+        
+        //UIStepper
+        let stepper=UIStepper()
+        stepper.center=CGPoint(x: 55, y: 370)
+        stepper.isContinuous=true
+        stepper.autorepeat=true
+        stepper.wraps=true
+        stepper.minimumValue=1
+        stepper.maximumValue=10
+        stepper.stepValue=1
+        stepper.tintColor=UIColor.blue
+        stepper.addTarget(self, action: #selector(click), for: UIControl.Event.valueChanged)
+//        stepper.setDecrementImage(UIImage(named: "ic_launcher")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), for: UIControl.State.normal)
+        self.view.addSubview(stepper)
     }
     
     @objc func changeColor(){
@@ -129,6 +143,10 @@ class ViewController: UIViewController ,UITextFieldDelegate{
     
     @objc func changeValue(slider:UISlider){
         print(slider.value)
+    }
+    
+    @objc func click(stepper:UIStepper){
+        print(stepper.value)
     }
     
     @objc func changeNum(page:UIPageControl){
