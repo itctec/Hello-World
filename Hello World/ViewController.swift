@@ -95,10 +95,17 @@ class ViewController: UIViewController ,UITextFieldDelegate{
         slider.minimumTrackTintColor=UIColor.red
         slider.maximumTrackTintColor=UIColor.green
         //slider.thumbTintColor=UIColor.blue
-        slider.setThumbImage(UIImage(named: "ic_launcher"), for: UIControl.State.normal)
+        //slider.setThumbImage(UIImage(named: "ic_launcher"), for: UIControl.State.normal)
         slider.addTarget(self, action: #selector(changeValue), for: UIControl.Event.valueChanged)
         self.view.addSubview(slider)
         
+        
+        //UIActivityIndicatorView
+        let indicator=UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        indicator.center=CGPoint(x: self.view.frame.width/2, y: 300)
+        indicator.color=UIColor.black
+        self.view.addSubview(indicator)
+        indicator.startAnimating()
     }
     
     @objc func changeColor(){
