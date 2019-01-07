@@ -215,6 +215,30 @@ class ViewController: UIViewController ,UITextFieldDelegate,UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("\(component)分区\(row)行")
     }
+    
+    
+    //UIAlertController
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let alertView=UIAlertController(title: "标题", message:"警告内容", preferredStyle: UIAlertController.Style.alert)
+        let alertView=UIAlertController(title: "标题", message:"警告内容", preferredStyle: UIAlertController.Style.actionSheet)
+        let action=UIAlertAction(title: "按钮", style: UIAlertAction.Style.default, handler: {(UIAlertAction) -> Void in
+            print("Click")
+        })
+        let action2=UIAlertAction(title: "取消", style: UIAlertAction.Style.cancel, handler: {(UIAlertAction) ->
+            Void in
+            print("取消")
+        })
+        let action3=UIAlertAction(title: "注意", style: UIAlertAction.Style.destructive, handler: {(UIAlertAction) -> Void in
+            print("注意")
+        })
+        alertView.addAction(action)
+        alertView.addAction(action2)
+        alertView.addAction(action3)
+//        alertView.addTextField{(textField2) in
+//            textField2.placeholder="place"
+//        }
+        self.present(alertView,animated: true,completion: nil)
+    }
 
 }
 
